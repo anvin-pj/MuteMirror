@@ -43,15 +43,15 @@ To get a local copy of this project up and running, follow these steps:
 ## Using the Application
 The application utilizes your webcam to detect hand gestures for volume control. Here are some key features:
 
-Increase Volume: Bring your thumb and index finger further apart to increase the volume.
-Decrease Volume: Bring your thumb and index finger closer together to decrease the volume.
-Toggle Modes: Switch between simulated and real volume control using the t key.
-View Tips: Press the h key to see funny tips on how to control the volume.
+Increase Volume: Bring your thumb and index finger further apart to increase the volume.\
+Decrease Volume: Bring your thumb and index finger closer together to decrease the volume.\
+Toggle Modes: Switch between simulated and real volume control using the t key.\
+View Tips: Press the h key to see funny tips on how to control the volume.\
 Quit Application: Press the q key to exit the application.
 ## Available Features
-Gesture Recognition: Control your system volume with simple hand gestures.
-Mute Status: The application starts in a muted state, which can be toggled.
-Useless Tips: A list of humorous, non-functional tips appears to keep the experience lighthearted.
+Gesture Recognition: Control your system volume with simple hand gestures.\
+Mute Status: The application starts in a muted state, which can be toggled.\
+Useless Tips: A list of humorous, non-functional tips appears to keep the experience lighthearted.\
 Equalizer Simulation: A fake equalizer display that adds a visual element to the volume control.
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, feel free to fork the repository and submit a pull request.
