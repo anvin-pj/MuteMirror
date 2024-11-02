@@ -56,13 +56,4 @@ Equalizer Simulation: A fake equalizer display that adds a visual element to the
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, feel free to fork the repository and submit a pull request.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-
-### Instructions to Use:
-1. Replace the `https://github.com/yourusername/gesture-controlled-volume-adjuster.git` with the actual URL of your GitHub repository.
-2. Adjust any sections as needed to better fit your project's specific features or setup process.
-3. Save the text above as a `README.md` file in the root directory of your project.
-
 Let me know if you need any changes or additional information!
