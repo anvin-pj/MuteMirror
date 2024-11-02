@@ -2,6 +2,7 @@ import cv2
 import mediapipe as mp
 import pyautogui
 import numpy as np
+import random
 import time
 
 # Initialize MediaPipe Hands with increased confidence
@@ -16,13 +17,32 @@ cap = cv2.VideoCapture(0)
 volume_level = 50
 is_muted = True  # Initially set to muted
 toggle_real_volume = False  # Start in simulated mode
+show_help = False  # Help feature is initially off
+current_tip_index = 0  # Keep track of the current tip index
 
 # Fake equalizer settings
 equalizer_bars = [np.random.randint(10, 50) for _ in range(5)]
 
+# List of useless tips
+useless_tips = [
+    "To increase volume, use your psychic powers!",
+    "Have you tried turning your device upside down?",
+    "For better results, use a magic wand.",
+    "Make sure to have your lucky charm nearby!",
+    "Try yelling 'Volume Up!' really loud.",
+    "Put on your invisible hand gloves for best gestures!",
+    "Have you tried rebooting reality?",
+    "For ultimate control, close your eyes and imagine the volume."
+]
+
 # Function to adjust system volume (real functionality)
 def adjust_system_volume(volume):
     pyautogui.press("volumeup") if volume > volume_level else pyautogui.press("volumedown")
+
+# Function to display the current useless tip
+def display_useless_tip(frame, index):
+    tip = useless_tips[index]
+    cv2.putText(frame, tip, (50, 450), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
 # Main loop
 while cap.isOpened():
@@ -79,6 +99,24 @@ while cap.isOpened():
     if is_muted:
         cv2.putText(frame, "Oops, still muted!", (60, 400), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
+    # "Help" button for useless advice
+    cv2.rectangle(frame, (50, 400), (300, 450), (255, 165, 0), -1)
+    cv2.putText(frame, "Help (Press 'h' for tips)", (80, 435), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+
+    # Display useless advice if help is toggled on
+    if show_help:
+        display_useless_tip(frame, current_tip_index)
+
+    # Display instructions on screen
+    instructions = [
+        "Shortcuts:",
+        "'q' - Quit",
+        "'t' - Toggle Real/Simulated Volume",
+        "'h' - Toggle Help (Press 'n' for next tip)"
+    ]
+    for i, text in enumerate(instructions):
+        cv2.putText(frame, text, (50, 500 + i * 25), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
+
     # Fake equalizer display
     for i in range(5):
         bar_height = equalizer_bars[i]
@@ -96,6 +134,10 @@ while cap.isOpened():
     elif key == ord('t'):
         toggle_real_volume = not toggle_real_volume  # Toggle between simulated and real volume
         is_muted = not toggle_real_volume  # Update mute status based on mode
+    elif key == ord('h'):
+        show_help = not show_help  # Toggle help on/off
+    elif key == ord('n') and show_help:
+        current_tip_index = (current_tip_index + 1) % len(useless_tips)  # Show next tip
 
 # Release resources
 cap.release()
